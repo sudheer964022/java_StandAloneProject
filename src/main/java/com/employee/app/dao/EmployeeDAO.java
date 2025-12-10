@@ -95,4 +95,20 @@ public class EmployeeDAO {
             return false;
         }
     }
+
+    public boolean deleteEmployee(int id) {
+        String sql = "DELETE FROM employee_details WHERE id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, id);
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

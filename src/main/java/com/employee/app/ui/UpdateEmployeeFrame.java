@@ -80,6 +80,16 @@ public class UpdateEmployeeFrame extends JFrame {
             int id = Integer.parseInt(idText);
             String selectedField = (String) fieldDropdown.getSelectedItem();
 
+            // Validate salary if it's the selected field
+            if ("salary".equals(selectedField)) {
+                try {
+                    Double.parseDouble(newValue);
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(this, "Salary must be a valid number.");
+                    return;
+                }
+            }
+
             boolean success = employeeDAO.updateEmployeeField(id, selectedField, newValue);
 
             if (success) {

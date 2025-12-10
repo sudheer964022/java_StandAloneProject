@@ -60,8 +60,14 @@ public class GetEmployeeByIdFrame extends JFrame {
     }
 
     private void fetchEmployee() {
+        String idText = idField.getText();
+        if (idText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter an Employee ID.");
+            return;
+        }
+
         try {
-            int id = Integer.parseInt(idField.getText());
+            int id = Integer.parseInt(idText);
             Employee emp = employeeDAO.getEmployeeById(id);
 
             if (emp != null) {

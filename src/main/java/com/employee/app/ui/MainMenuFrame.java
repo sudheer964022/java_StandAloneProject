@@ -62,8 +62,15 @@ public class MainMenuFrame extends JFrame {
         gbc.gridy++;
         mainPanel.add(btnUpdate, gbc);
 
-        // Button 5: Exit
-        JButton btnExit = new JButton("5. Exit Application");
+        // Button 5: Delete Employee
+        JButton btnDelete = new JButton("5. Delete Employee");
+        btnDelete.setFocusPainted(false);
+        btnDelete.addActionListener(e -> new DeleteEmployeeFrame().setVisible(true));
+        gbc.gridy++;
+        mainPanel.add(btnDelete, gbc);
+
+        // Button 6: Exit
+        JButton btnExit = new JButton("6. Exit Application");
         btnExit.setFocusPainted(false);
         btnExit.setBackground(new Color(220, 53, 69)); // Reddish color for exit
         btnExit.setForeground(Color.WHITE);

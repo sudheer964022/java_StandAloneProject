@@ -83,6 +83,14 @@ public class AddEmployeeFrame extends JFrame {
             return;
         }
 
+        // Validate that salary is a number
+        try {
+            Double.parseDouble(salary); // Try parsing to double to allow decimals
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Salary must be a valid number.");
+            return;
+        }
+
         Employee emp = new Employee(name, email, salary);
         boolean success = employeeDAO.addEmployee(emp);
 
